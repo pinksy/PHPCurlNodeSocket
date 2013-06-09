@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Form</title>
+    <script type="text/javascript" src="js/socket.io/socket.io.js"></script>
+    <script type="text/javascript" src="js/jquery-1.9.1.min.js"></script>
+    <script type="text/javascript">
+      $().ready(function() {
+        var socket = io.connect('http://localhost');
+        socket.on('data', function(data) {
+          var obj = $.parseJSON(data);
+          $("#value1").html(obj.value1);
+          $("#value2").html(obj.value2);
+        });
+      });
+    </script>
+  </head>
+  <body>
+    Value 1: <span id="value1"></span>
+    <br />
+    Value 2: <span id="value2"></span>
+  </body>
+</html>
